@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-const Category = () => {
+const Category = ({ category }) => {
   return (
     <div>
-      <h2>this is category</h2>
+      {category.map((item) => {
+        return <button>{item}</button>;
+      })}
       <Outlet />
     </div>
   );
