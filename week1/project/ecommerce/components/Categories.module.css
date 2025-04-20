@@ -15,25 +15,3 @@
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
-.item {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    list-style: none;
-    justify-content: space-between;
-}
-
-.img {
-    margin-bottom: auto;
-    margin-top: auto;
-    max-height: 300px;
-    object-fit: contain;
-    width: 100%;
-}
-
-.title {
-    font-family: HelveticaNow, Helvetica, sans-serif;
-    margin-top: auto;
-    font-weight: bold;
-}
