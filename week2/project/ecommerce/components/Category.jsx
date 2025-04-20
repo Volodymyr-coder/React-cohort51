@@ -1,11 +1,23 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import CategoryProducts from './CategoryProducts';
 
-const Category = ({ category }) => {
+const Category = ({ category, onCategoryClick }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (item) => {
+    navigate(`/categories/category/${item}`);
+    onCategoryClick();
+  };
+
   return (
     <div>
       {category.map((item) => {
-        return <button>{item}</button>;
+        return (
+          <button key={item} onClick={() => handleClick(item)}>
+            {item}
+          </button>
+        );
       })}
       <Outlet />
     </div>
