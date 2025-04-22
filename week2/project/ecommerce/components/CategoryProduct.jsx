@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchAllData } from '../helpers/fetchData';
 import Loader from '../helpers/Loader';
+import css from './CategoryProduct.module.css';
 
 const CategoryProducts = () => {
   const { category } = useParams();
@@ -32,16 +33,17 @@ const CategoryProducts = () => {
   if (loading) return <Loader />;
 
   return (
-    <ul>
+    <ul className={css.gridContainer}>
       {products.map((item) => (
         <li
+          className={css.item}
           key={item.id}
           onClick={() => {
             handleProductClick(item.id);
           }}
         >
-          <img src={item.image} alt={item.title} />
-          <p>{item.title}</p>
+          <img className={css.img} src={item.image} alt={item.title} />
+          <p className={css.title}>{item.title}</p>
         </li>
       ))}
     </ul>

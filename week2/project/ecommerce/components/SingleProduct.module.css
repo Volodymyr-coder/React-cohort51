@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.img {
+    min-width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 80vh;
+    width: 100%;
+}
+
+.description {
+    margin: auto;
+    align-items: center;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import CategoryProducts from './CategoryProducts';
+import CategoryProducts from './CategoryProduct';
 
 const Category = ({ category, onCategoryClick }) => {
   const navigate = useNavigate();

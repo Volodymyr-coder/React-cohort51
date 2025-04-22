@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { fetchAllData } from '../helpers/fetchData';
 import { PRODUCT_URL } from '../Constants';
 import Loader from '../helpers/Loader';
+import css from './SingleProduct.module.css';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -36,11 +37,17 @@ const SingleProduct = () => {
       {loading && <Loader />}
       {error && <p>{error}</p>}
       {!loading && !error && (
-        <>
-          <img src={product.image} alt={product.title} width={200} />
-
-          <p>Category: {product.title}</p>
-        </>
+        <div className={css.container}>
+          <div>
+            <h1>{product.title}</h1>
+          </div>
+          <div className={css.wrapper}>
+            <div className={css.img}>
+              <img src={product.image} alt={product.title} width={200} />
+            </div>
+            <p>Category: {product.description}</p>
+          </div>
+        </div>
       )}
     </div>
   );
