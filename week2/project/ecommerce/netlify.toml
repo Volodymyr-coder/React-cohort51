@@ -1,4 +1,3 @@
-[build]
+base = "project/ecommerce"
   command = "npm run build"
-  publish = "ecommerce/dist"
-  base = "ecommerce"
+  publish = "project/ecommerce/build"
