@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Category from './Category.jsx';
 import Loader from '../helpers/Loader.jsx';
 import { fetchAllData } from '../helpers/fetchData.js';
-import { CATEGORY_URL, PRODUCT_URL } from '../Constants.js';
+import { CATEGORY_URL, PRODUCT_URL } from '../src/constants.js';
 import css from './Categories.module.css';
 
 const Categories = () => {

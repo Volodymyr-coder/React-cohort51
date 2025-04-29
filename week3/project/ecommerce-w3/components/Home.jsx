@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchAllData } from '../helpers/fetchData';
-import { PRODUCT_URL } from '../Constants';
+import { PRODUCT_URL } from '../src/constants';
 import css from './Home.module.css';
 import Loader from '../helpers/Loader';
 const Home = () => {

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchAllData } from '../helpers/fetchData';
-import { PRODUCT_URL } from '../Constants';
+// import { PRODUCT_URL } from '../src/constants';
 import Loader from '../helpers/Loader';
 import css from './SingleProduct.module.css';
+import { PRODUCT_URL } from '../src/constants.js';
 
 const SingleProduct = () => {
   const { id } = useParams();
