@@ -10,20 +10,15 @@ import './App.css';
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="categories" element={<Categories />}>
-            <Route path="category" element={<Category />} />
-            <Route path="category/:category" element={<CategoryProducts />} />
-          </Route>
-
-          <Route path="categories/product/:id" element={<SingleProduct />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Categories />} />
+        <Route path="category" element={<Category />} />
+        <Route path="category/:category" element={<CategoryProducts />} />
+        <Route path="categories/product/:id" element={<SingleProduct />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

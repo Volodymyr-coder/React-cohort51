@@ -1,15 +1,19 @@
-.container {
+.navContainer {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: space-between;
     align-items: center;
     padding: 15px;
     gap: 15px;
     height: 50px;
-    background-color: lightblue;
+    color: blue;
 }
 
 .link {
-    color: white;
+    color: black;
     font-size: large;
+}
+
+.title {
+    color: black;
 }
