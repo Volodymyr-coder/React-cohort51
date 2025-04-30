@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Category from './Category.jsx';
 import Loader from '../../helpers/Loader.jsx';
 import { fetchAllData } from '../../helpers/fetchData.js';
@@ -9,6 +11,8 @@ import HeartSolid from '../assets/heart-solid.svg';
 import css from './Categories.module.css';
 
 const Categories = () => {
+  const navigate = useNavigate();
+
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
@@ -46,7 +50,12 @@ const Categories = () => {
     getData();
   }, []);
 
-  const handleCategoryClick = () => {
+  const handleProductClick = (id) => {
+    navigate(`/categories/product/${id}`);
+  };
+
+  const handleCategoryClick = (e) => {
+    e.stopPropagation();
     setShowProducts(false);
   };
 
@@ -60,18 +69,28 @@ const Categories = () => {
         <>
           <ul className={css.gridContainer}>
             {products.map((item) => (
-              <li className={css.item} key={item.id}>
-                <img className={css.img} src={item.image} alt={item.title} />
-                <img
-                  src={isFavorite(item.id) ? HeartSolid : HeartRegular}
-                  alt="heart"
-                  width={20}
-                  height={20}
-                  onClick={() => {
-                    toggleFavorites(item.id);
-                  }}
-                />{' '}
-                <p className={css.title}>{item.category}</p>
+              <li
+                className={css.item}
+                key={item.id}
+                onClick={() => {
+                  handleProductClick(item.id);
+                }}
+              >
+                <div className={css.imgContainer}>
+                  <img className={css.img} src={item.image} alt={item.title} />
+                  <img
+                    src={isFavorite(item.id) ? HeartSolid : HeartRegular}
+                    alt="heart"
+                    width={25}
+                    height={25}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleFavorites(item.id);
+                    }}
+                  />
+                </div>
+
+                <p className={css.title}>{item.title}</p>
               </li>
             ))}
           </ul>

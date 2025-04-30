@@ -13,7 +13,7 @@ const Layout = () => {
         </h1>
         <nav className={css.navContainer}>
           <Link className={css.link} to="/">
-            Categories
+            Products
           </Link>
           <Link className={css.link} to="/favorites">
             Favorites
