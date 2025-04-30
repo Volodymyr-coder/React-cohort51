@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchAllData } from '../helpers/fetchData';
-import Loader from '../helpers/Loader';
+import { fetchAllData } from '../../helpers/fetchData';
+import Loader from '../../helpers/Loader';
+import HeartRegular from '../assets/heart-regular.svg';
+
 import css from './CategoryProduct.module.css';
 
 const CategoryProducts = () => {
@@ -43,6 +45,8 @@ const CategoryProducts = () => {
           }}
         >
           <img className={css.img} src={item.image} alt={item.title} />
+          <img src={HeartRegular} alt="heart" width={20} height={20} />
+
           <p className={css.title}>{item.title}</p>
         </li>
       ))}

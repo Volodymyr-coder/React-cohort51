@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchAllData } from '../helpers/fetchData';
-// import { PRODUCT_URL } from '../src/constants';
-import Loader from '../helpers/Loader';
+import { fetchAllData } from '../../helpers/fetchData';
+import Loader from '../../helpers/Loader.jsx';
 import css from './SingleProduct.module.css';
-import { PRODUCT_URL } from '../src/constants.js';
+import { PRODUCT_URL } from '../../src/constants.js';
+import HeartRegular from '../assets/heart-regular.svg';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -45,6 +45,7 @@ const SingleProduct = () => {
           <div className={css.wrapper}>
             <div className={css.img}>
               <img src={product.image} alt={product.title} width={200} />
+              <img src={HeartRegular} alt="heart" width={20} height={20} />
             </div>
             <p>Category: {product.description}</p>
           </div>
