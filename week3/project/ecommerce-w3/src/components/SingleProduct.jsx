@@ -5,19 +5,22 @@ import Loader from '../../helpers/Loader.jsx';
 import css from './SingleProduct.module.css';
 import { PRODUCT_URL } from '../../src/constants.js';
 import HeartRegular from '../assets/heart-regular.svg';
+import HeartSolid from '../assets/heart-solid.svg';
+import { useFavorites } from '../hooks.jsx';
 
 const SingleProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const numberId = Number(id);
+  const { toggleFavorites, isFavorite } = useFavorites();
+  const favorite = isFavorite(numberId);
   useEffect(() => {
     const getProduct = async () => {
       try {
         setLoading(true);
-        const data = await fetchAllData(`${PRODUCT_URL}/${id}`);
-        console.log(data);
+        const data = await fetchAllData(`${PRODUCT_URL}/${numberId}`);
         setProduct(data);
       } catch (error) {
         setError('Something went wrong. Please try again...');
@@ -27,8 +30,7 @@ const SingleProduct = () => {
       }
     };
     getProduct();
-  }, [id]);
-  console.log(product);
+  }, [numberId]);
 
   if (loading) return <Loader />;
   if (error) return <p>{error}</p>;
@@ -44,8 +46,20 @@ const SingleProduct = () => {
           </div>
           <div className={css.wrapper}>
             <div className={css.img}>
-              <img src={product.image} alt={product.title} width={200} />
-              <img src={HeartRegular} alt="heart" width={20} height={20} />
+              <img
+                className={css.img}
+                src={product.image}
+                alt={product.title}
+              />
+              <img
+                src={favorite ? HeartSolid : HeartRegular}
+                alt="heart"
+                width={20}
+                height={20}
+                onClick={() => {
+                  toggleFavorites(numberId);
+                }}
+              />
             </div>
             <p>Category: {product.description}</p>
           </div>

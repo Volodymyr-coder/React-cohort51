@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Category from './Category.jsx';
 import Loader from '../../helpers/Loader.jsx';
 import { fetchAllData } from '../../helpers/fetchData.js';
+import { useFavorites } from '../hooks.jsx';
 import { CATEGORY_URL, PRODUCT_URL } from '../../src/constants.js';
-import css from './Categories.module.css';
 import HeartRegular from '../assets/heart-regular.svg';
+import HeartSolid from '../assets/heart-solid.svg';
+import css from './Categories.module.css';
 
 const Categories = () => {
   const [category, setCategory] = useState([]);
@@ -12,6 +14,7 @@ const Categories = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showProducts, setShowProducts] = useState(true);
+  const { toggleFavorites, isFavorite } = useFavorites();
 
   useEffect(() => {
     const getCategories = async () => {
@@ -59,7 +62,15 @@ const Categories = () => {
             {products.map((item) => (
               <li className={css.item} key={item.id}>
                 <img className={css.img} src={item.image} alt={item.title} />
-                <img src={HeartRegular} alt="heart" width={20} height={20} />
+                <img
+                  src={isFavorite(item.id) ? HeartSolid : HeartRegular}
+                  alt="heart"
+                  width={20}
+                  height={20}
+                  onClick={() => {
+                    toggleFavorites(item.id);
+                  }}
+                />{' '}
                 <p className={css.title}>{item.category}</p>
               </li>
             ))}
