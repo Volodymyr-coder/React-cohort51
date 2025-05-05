@@ -38,19 +38,16 @@ const Favorites = () => {
     <div className={css.container}>
       <ul className={css.gridContainer}>
         {products.map((product) => (
-          <li
-            className={css.item}
-            key={product.id}
-            onClick={() => {
-              handleProductClick(product.id);
-            }}
-          >
+          <li className={css.item} key={product.id}>
             <div className={css.imgContainer}>
               <img
                 className={css.img}
                 src={product.image}
                 alt={product.title}
                 width={50}
+                onClick={() => {
+                  handleProductClick(product.id);
+                }}
               />
               <div className={css.heartIcon}>
                 <img
